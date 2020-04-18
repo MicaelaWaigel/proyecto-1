@@ -1,0 +1,34 @@
+.space{
+    margin-top: 2%;
+}
+
+.title {
+    margin-left: 10%;
+}
+
+.tam {
+    margin-top: 3%;
+    width: 95%;
+}
+
+.tamPunt {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    width: 95%;
+}
+
+.tamBar{
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    width: 85%;
+}
+
+.posBar {
+    margin-left: 1%;
+}
+
+.pos {
+    padding-top: 1%;
+    margin-left: 5%;
+}
