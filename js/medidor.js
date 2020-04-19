@@ -64,7 +64,38 @@ function updatesCant(value, tipo) {
         default:
             console.log("Con el espacio no deberia hacer nada");
     }
+    checkMiddle();
     checkRequerimientos(value, tipo);
+}
+
+function checkMiddle() {
+
+    passMiddle = password.slice(1,-1);
+    const cNum = getNum(passMiddle);
+    const cSimb = getSimb(passMiddle);
+    datos.middle = cNum + cSimb;
+    document.getElementById('cant6').innerHTML = datos.middle;
+    
+}
+
+function getNum(pass) {
+    let cant = 0;
+    for(i=0; i<pass.length; i++) {
+        if(getTipo(pass[i]) === NUMERO) {
+            cant++;
+        }
+    }
+    return cant;
+}
+
+function getSimb(pass) {
+    let cant = 0;
+    for(i=0; i<pass.length; i++) {
+        if(getTipo(pass[i]) === SIMBOLO) {
+            cant++;
+        }
+    }
+    return cant;
 }
 
 
@@ -72,6 +103,11 @@ function checkRequerimientos(esBorrado, tipo) {
     if (esBorrado === -1) {
         if ((tipo === MAYUS) && (datos.cantMayus === 0)) {
             datos.cantReq--;
+            document.getElementById('status2').classList.remove('ok');
+            document.getElementById('status2').classList.remove('fa-check-circle');
+            document.getElementById('status2').classList.add('fa-times-circle');
+            document.getElementById('status2').classList.add('mal');
+            
         }
         if ((tipo === MINUS) && (datos.cantMinus === 0)) {
             datos.cantReq--;
@@ -91,6 +127,10 @@ function checkRequerimientos(esBorrado, tipo) {
     } else {
         if ((tipo === MAYUS) && (datos.cantMayus === 1)) {
             datos.cantReq++;
+            document.getElementById('status2').classList.remove('mal');
+            document.getElementById('status2').classList.remove('fa-times-circle');
+            document.getElementById('status2').classList.add('ok');
+            document.getElementById('status2').classList.add('fa-check-circle');
         }
         if ((tipo === MINUS) && (datos.cantMinus === 1)) {
             datos.cantReq++;
@@ -174,6 +214,7 @@ function updatePuntaje() {
     
     //Cambio de color la barra de progreso de acuerdo al puntaje
     let barPuntaje =document.getElementById('barPuntaje');
+
     if (datos.puntaje > 44) {
         barPuntaje.classList.remove('bg-danger');
         barPuntaje.classList.add('bg-warning');

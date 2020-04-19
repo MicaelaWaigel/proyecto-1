@@ -32,3 +32,19 @@
     padding-top: 1%;
     margin-left: 5%;
 }
+
+.mal {
+    color: #dc3545;
+}
+
+.ok {
+    color: #28a745;
+}
+
+.warning {
+    color: #ffc107;
+}
+
+.neutral {
+    color: #17a2b8;
+}
