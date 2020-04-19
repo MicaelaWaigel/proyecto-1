@@ -16,47 +16,54 @@ let datos = {
     cantSimb: 0,
     middle: 0,
     cantReq: 0,
-    requerimientos: false
+    requerimientos: false,
+    lastChar: ''
 }
 
 
 function update(event) {
     password = event.target.value;
-    const lastChar = event.data;
+    const newChar = event.data;
 
-    const tipo = getTipo(lastChar);
+    const tipo = getTipo(newChar);
     console.log('Tipo => ', tipo);
 
     if (tipo === BORRADO) {
-
+        updatesCant(-1, getTipo(datos.lastChar));
+        datos.lastChar = password[password.length - 1];
     } else {
-        datos.long++;
-        document.getElementById('cant1').innerHTML = datos.long;
-        switch (tipo) {
-            case MAYUS: 
-                datos.cantMayus++;
-                document.getElementById('cant2').innerHTML = datos.cantMayus;
-                break;
-            case MINUS:
-                datos.cantMinus++;
-                document.getElementById('cant3').innerHTML = datos.cantMinus;
-                break;
-            case NUMERO:
-                datos.cantNum++;
-                document.getElementById('cant4').innerHTML = datos.cantNum;
-                break;
-            case SIMBOLO:
-                datos.cantSimb++;
-                document.getElementById('cant5').innerHTML = datos.cantSimb;
-                break;
-            default:
-                console.log("Con el espacio no deberia hacer nada");
-        }
-        updatePuntaje();
-        console.log(datos);
+        updatesCant(1, getTipo(newChar));
+        datos.lastChar = newChar
     }
+    updatePuntaje();
+    console.log(datos);
 
     
+}
+
+function updatesCant(value, tipo) {
+    datos.long += value;
+    document.getElementById('cant1').innerHTML = datos.long;
+    switch (tipo) {
+        case MAYUS: 
+            datos.cantMayus += value;
+            document.getElementById('cant2').innerHTML = datos.cantMayus;
+            break;
+        case MINUS:
+            datos.cantMinus += value;
+            document.getElementById('cant3').innerHTML = datos.cantMinus;
+            break;
+        case NUMERO:
+            datos.cantNum += value;
+            document.getElementById('cant4').innerHTML = datos.cantNum;
+            break;
+        case SIMBOLO:
+            datos.cantSimb += value;
+            document.getElementById('cant5').innerHTML = datos.cantSimb;
+            break;
+        default:
+            console.log("Con el espacio no deberia hacer nada");
+    }
 }
 
 function getTipo(char) {
