@@ -26,7 +26,6 @@ function update(event) {
     const newChar = event.data;
 
     const tipo = getTipo(newChar);
-    console.log('Tipo => ', tipo);
 
     if (tipo === BORRADO) {
         updatesCant(-1, getTipo(datos.lastChar));
@@ -136,4 +135,14 @@ function updatePuntaje() {
 
     barPuntaje.style.width = datos.puntaje + '%';
     barPuntaje.innerHTML = datos.puntaje + '%';
+}
+
+function ocultarPass(event) {
+    const iPass = document.getElementById('password');
+    if (event.target.checked) {
+        iPass.type = 'password';
+    } else {
+        iPass.type = 'text';
+    }
+    
 }
