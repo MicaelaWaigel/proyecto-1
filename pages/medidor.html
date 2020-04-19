@@ -23,7 +23,7 @@
             <div class="card-body row">
                 <div class="col-sm">
                     <div class="tam">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" onchange="update(event)">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña" oninput="update(event)">
                     </div>
                     <div class="pos">
                         <input class="form-check-input" type="checkbox" value="" id="hidePass">
@@ -34,7 +34,7 @@
                     <div class="tamPunt d-flex">
                         <label for="porcentaje" class="posBar">Puntaje</label>
                         <div class="progress tamBar">
-                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"></div>
+                            <div id='barPuntaje' class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="tamPunt">
@@ -53,11 +53,11 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           Contener letras mayúsculas
-                          <span class="badge badge-danger badge-pill">3+</span>
+                          <span class="badge badge-danger badge-pill">1+</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           Contener letras minúsculas
-                          <span class="badge badge-danger badge-pill">3+</span>
+                          <span class="badge badge-danger badge-pill">1+</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Contener números
