@@ -6,7 +6,7 @@ const ESPACIO = 'ESPACIO';
 const BORRADO = 'BORRADO';
 
 let password = '';
-let datos = {
+const datos = {
     long: 0,
     puntaje: 0,
     complejidad: 'mala',
@@ -297,4 +297,34 @@ function ocultarPass(event) {
         iPass.type = 'text';
     }
     
+}
+
+function savePass() {
+   
+    const passStorage = localStorage.getItem('PASSWORDS');
+    
+    if (passStorage == null){
+        const passwords = [];
+        const pass = {
+            password,
+            datos
+        };
+        passwords.push(pass);
+        localStorage.setItem('PASSWORDS', JSON.stringify(passwords));
+    } else {
+        const passwords = JSON.parse(passStorage);
+        if (passwords.length === 5) {
+            passwords.shift();
+            
+        } 
+        const pass = {
+            password,
+            datos
+        };
+        passwords.push(pass);
+        localStorage.removeItem('PASSWORDS');
+        localStorage.setItem('PASSWORDS', JSON.stringify(passwords));
+    }
+
+    console.log(JSON.parse(localStorage.getItem('PASSWORDS')));
 }
