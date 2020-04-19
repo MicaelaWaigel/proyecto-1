@@ -247,17 +247,46 @@ function updatePuntaje() {
     let barPuntaje =document.getElementById('barPuntaje');
 
     if (datos.puntaje > 44) {
-        barPuntaje.classList.remove('bg-danger');
-        barPuntaje.classList.add('bg-warning');
+        if(barPuntaje.classList.contains('bg-warging')){
+            barPuntaje.classList.remove('bg-warning');
+        }
+        if(!barPuntaje.classList.contains('bg-danger')) {
+            barPuntaje.classList.add('bg-danger');
+        }
+    }
+
+    if (datos.puntaje > 44) {
+        if(barPuntaje.classList.contains('bg-danger')){
+            barPuntaje.classList.remove('bg-danger');
+        } else {
+            if(barPuntaje.classList.contains('bg-success')) {
+                barPuntaje.classList.remove('bg-success');
+            }
+        }
+        if(!barPuntaje.classList.contains('bg-warning')){
+            barPuntaje.classList.add('bg-warning');
+        }
+        
     }
 
     if (datos.puntaje > 75) {
-        barPuntaje.classList.remove('bg-warning');
-        barPuntaje.classList.add('bg-success');
+        if (barPuntaje.classList.contains('bg-warning')){
+            barPuntaje.classList.remove('bg-warning');
+        }
+        if (!barPuntaje.classList.contains('bg-success')) {
+            barPuntaje.classList.add('bg-success');
+        }
+        
     }
-
-    barPuntaje.style.width = datos.puntaje + '%';
-    barPuntaje.innerHTML = datos.puntaje + '%';
+    
+    if(datos.puntaje > 100) {
+        barPuntaje.style.width = '100%';
+        barPuntaje.innerHTML = '100%';
+    } else {
+        barPuntaje.style.width = datos.puntaje + '%';
+        barPuntaje.innerHTML = datos.puntaje + '%';
+    }
+    
 }
 
 function ocultarPass(event) {

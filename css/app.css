@@ -1,3 +1,8 @@
+#contenedor {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .space{
     margin-top: 2%;
 }
@@ -19,9 +24,9 @@
 
 .tamBar{
     margin-left: 3%;
-    margin-top: 2%;
+    margin-top: 1%;
     margin-bottom: 2%;
-    width: 77%;
+    width: 100%;
 }
 
 .posBar {
