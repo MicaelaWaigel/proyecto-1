@@ -73,6 +73,16 @@ function checkMiddle() {
     passMiddle = password.slice(1,-1);
     const cNum = getNum(passMiddle);
     const cSimb = getSimb(passMiddle);
+    if (datos.middle === 0) {
+        if ((cNum + cSimb) > 0) {
+            updateIcon('status6', false);
+        }
+    } else {
+        console.log(datos.middle);
+        if ((cNum + cSimb) === 0) {
+            updateIcon('status6', true);
+        }
+    }
     datos.middle = cNum + cSimb;
     document.getElementById('cant6').innerHTML = datos.middle;
     
@@ -103,54 +113,75 @@ function checkRequerimientos(esBorrado, tipo) {
     if (esBorrado === -1) {
         if ((tipo === MAYUS) && (datos.cantMayus === 0)) {
             datos.cantReq--;
-            document.getElementById('status2').classList.remove('ok');
-            document.getElementById('status2').classList.remove('fa-check-circle');
-            document.getElementById('status2').classList.add('fa-times-circle');
-            document.getElementById('status2').classList.add('mal');
-            
+            updateIcon('status2', true);
         }
         if ((tipo === MINUS) && (datos.cantMinus === 0)) {
             datos.cantReq--;
+            updateIcon('status3', true);
         }
         if ((tipo === NUMERO) && (datos.cantNum === 0)) {
             datos.cantReq--;
+            updateIcon('status4', true);
         }
         if ((tipo === SIMBOLO) && (datos.cantSimb === 0)) {
             datos.cantReq--;
+            updateIcon('status5', true);
         }
         if (datos.long === 7) {
             datos.cantReq--;
+            updateIcon('status1', true);
         }
         if (datos.cantReq === 4) {
             datos.requerimientos = false;
+            updateIcon('status7', true);
         }
     } else {
         if ((tipo === MAYUS) && (datos.cantMayus === 1)) {
             datos.cantReq++;
-            document.getElementById('status2').classList.remove('mal');
-            document.getElementById('status2').classList.remove('fa-times-circle');
-            document.getElementById('status2').classList.add('ok');
-            document.getElementById('status2').classList.add('fa-check-circle');
+            updateIcon('status2', false);
         }
         if ((tipo === MINUS) && (datos.cantMinus === 1)) {
             datos.cantReq++;
+            updateIcon('status3', false);
         }
         if ((tipo === NUMERO) && (datos.cantNum === 1)) {
             datos.cantReq++;
+            updateIcon('status4', false);
         }
         if ((tipo === SIMBOLO) && (datos.cantSimb === 1)) {
             datos.cantReq++;
+            updateIcon('status5', false);
         }
         if (datos.long === 8) {
             datos.cantReq++;
+            updateIcon('status1', false);
         }
         if (datos.cantReq === 5) {
             datos.requerimientos = true;
+            updateIcon('status7', false);
         }
 
     }
     document.getElementById('cant7').innerHTML = datos.cantReq;
    
+}
+
+function updateIcon(id, esBorrado) {
+    if (id != '') {
+        const icono = document.getElementById(id);
+        if (esBorrado) {
+            icono.classList.remove('ok');
+            icono.classList.remove('fa-check-circle');
+            icono.classList.add('fa-times-circle');
+            icono.classList.add('mal');
+        } else {
+            icono.classList.remove('mal');
+            icono.classList.remove('fa-times-circle');
+            icono.classList.add('ok');
+            icono.classList.add('fa-check-circle');
+        }
+    }
+    
 }
 
 function getTipo(char) {
