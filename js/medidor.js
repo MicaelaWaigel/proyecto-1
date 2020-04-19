@@ -40,6 +40,7 @@ function update(event) {
     
 }
 
+
 function updatesCant(value, tipo) {
     datos.long += value;
     document.getElementById('cant1').innerHTML = datos.long;
@@ -63,6 +64,53 @@ function updatesCant(value, tipo) {
         default:
             console.log("Con el espacio no deberia hacer nada");
     }
+    checkRequerimientos(value, tipo);
+}
+
+
+function checkRequerimientos(esBorrado, tipo) {
+    if (esBorrado === -1) {
+        if ((tipo === MAYUS) && (datos.cantMayus === 0)) {
+            datos.cantReq--;
+        }
+        if ((tipo === MINUS) && (datos.cantMinus === 0)) {
+            datos.cantReq--;
+        }
+        if ((tipo === NUMERO) && (datos.cantNum === 0)) {
+            datos.cantReq--;
+        }
+        if ((tipo === SIMBOLO) && (datos.cantSimb === 0)) {
+            datos.cantReq--;
+        }
+        if (datos.long === 7) {
+            datos.cantReq--;
+        }
+        if (datos.cantReq === 4) {
+            datos.requerimientos = false;
+        }
+    } else {
+        if ((tipo === MAYUS) && (datos.cantMayus === 1)) {
+            datos.cantReq++;
+        }
+        if ((tipo === MINUS) && (datos.cantMinus === 1)) {
+            datos.cantReq++;
+        }
+        if ((tipo === NUMERO) && (datos.cantNum === 1)) {
+            datos.cantReq++;
+        }
+        if ((tipo === SIMBOLO) && (datos.cantSimb === 1)) {
+            datos.cantReq++;
+        }
+        if (datos.long === 8) {
+            datos.cantReq++;
+        }
+        if (datos.cantReq === 5) {
+            datos.requerimientos = true;
+        }
+
+    }
+    document.getElementById('cant7').innerHTML = datos.cantReq;
+   
 }
 
 function getTipo(char) {
@@ -118,10 +166,13 @@ function updatePuntaje() {
 
     let puntReq = 0;
     if (datos.requerimientos) {
-        puntReq = datos.cantReq*2
-        document.getElementById('punt2').innerHTML = puntReq;
+        puntReq = datos.cantReq*2;
     }
+    document.getElementById('punt7').innerHTML = puntReq;
+
     datos.puntaje = punt + puntMayus + puntMinus + puntNum + puntSimb + puntMiddle + puntReq;  
+    
+    //Cambio de color la barra de progreso de acuerdo al puntaje
     let barPuntaje =document.getElementById('barPuntaje');
     if (datos.puntaje > 44) {
         barPuntaje.classList.remove('bg-danger');
