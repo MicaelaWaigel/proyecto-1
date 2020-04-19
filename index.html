@@ -10,7 +10,7 @@
     
     <title>Proyecto 1</title>
   </head>
-  <body>
+  <body onload="cargarTabla()">
     <nav class="navbar navbar-dark bg-dark">
       <span class="navbar-brand mb-0 h1 title">PassMeter</span>
     </nav>
@@ -25,6 +25,21 @@
           <a class="btn btn-primary btn-lg" href="./pages/medidor.html" role="button">Nueva Medición</a>
         </div>
       </div>
+
+      <table class="table space">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Puntaje</th>
+            <th scope="col">Complejidad</th>
+        </tr>
+        </thead>
+        <tbody id="tablaStorage">
+        
+        </tbody>
+    </table>
+
     </div>
     <!-- JavaScript -->
     <script src="js/app.js"></script>
