@@ -25,3 +25,7 @@ function cargarTabla() {
     }
     
 }
+
+function navegando() {
+    console.log('navegando');
+}
