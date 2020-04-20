@@ -28,16 +28,24 @@ function update(event) {
     const tipo = getTipo(newChar);
 
     if (tipo === BORRADO) {
-        updatesCant(-1, getTipo(datos.lastChar));
-        datos.lastChar = password[password.length - 1];
+        if(password == '') {
+            resetAll();
+        } else {
+            updatesCant(-1, getTipo(datos.lastChar));
+            datos.lastChar = password[password.length - 1];
+        }
+        
     } else {
         updatesCant(1, getTipo(newChar));
         datos.lastChar = newChar
     }
     updatePuntaje();
     console.log(datos);
-
     
+}
+
+function resetAll() {
+    //Codigo para resetear todo
 }
 
 
