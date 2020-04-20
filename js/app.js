@@ -5,10 +5,13 @@ function cargarTabla() {
     if (passwords != null){
         for(i=0; i<passwords.length; i++) {
             const trOpen = '<tr>';
-            const fCell = '<td>' + i+1 + '</td>';
-    
+            const fCell = '<td>' + parseInt(i+1, 10) + '</td>';
+            const sCell = '<td>' + passwords[i].password + '</td>';
+            const tCell = '<td>' + passwords[i].datos.puntaje + '</td>';
+            const cCell = '<td>' + passwords[i].datos.complejidad + '</td>';
             const trClose = '</tr>';
-            tablaStorage.innerHTML = trOpen + fCell + trClose;
+            const celdas = fCell + sCell + tCell + cCell;
+            tablaStorage.innerHTML = trOpen + celdas + trClose;
         }
     }
     
