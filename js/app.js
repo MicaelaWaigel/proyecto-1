@@ -1,17 +1,17 @@
 function cargarTabla() {
-    let tablaStorage = document.getElementById('tablaStorage');
+    const tablaStorage = document.getElementById('tablaStorage');
     const passwords = JSON.parse(window.localStorage.getItem('PASSWORDS'));
     console.log(passwords);
     if (passwords != null){
         for(i=0; i<passwords.length; i++) {
             const trOpen = '<tr>';
-            let fCell = '<td>' + parseInt(i+1, 10) + '</td>';
-            let sCell = '<td>' + passwords[i].password + '</td>';
-            let tCell = '<td>' + passwords[i].datos.puntaje + '</td>';
-            let cCell = '<td>' + passwords[i].datos.complejidad + '</td>';
+            const fCell = '<td>' + parseInt(i+1, 10) + '</td>';
+            const sCell = '<td>' + passwords[i].password + '</td>';
+            const tCell = '<td>' + passwords[i].datos.puntaje + '</td>';
+            const cCell = '<td>' + passwords[i].datos.complejidad + '</td>';
             const trClose = '</tr>';
-            let celdas = fCell + sCell + tCell + cCell;
-            tablaStorage.innerHTML = trOpen + celdas + trClose;
+            const celdas = fCell + sCell + tCell + cCell;
+            tablaStorage.innerHTML += trOpen + celdas + trClose;
         }
     } else {
         const trOpen = '<tr>';
