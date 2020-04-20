@@ -327,4 +327,5 @@ function savePass() {
     }
 
     console.log(JSON.parse(localStorage.getItem('PASSWORDS')));
+    window.location.href = '../index.html'
 }
