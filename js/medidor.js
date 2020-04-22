@@ -6,7 +6,7 @@ const ESPACIO = 'ESPACIO';
 const BORRADO = 'BORRADO';
 
 let password = '';
-const datos = {
+let datos = {
     long: 0,
     puntaje: 0,
     complejidad: 'mala',
@@ -37,43 +37,73 @@ function update(event) {
         
     } else {
         updatesCant(1, getTipo(newChar));
-        datos.lastChar = newChar
+        datos.lastChar = newChar;
     }
     updatePuntaje();
-    console.log(datos);
     
 }
 
 function resetAll() {
-    //Codigo para resetear todo
+    for(i=0; i<7; i++) {
+        let idCant='cant'+(i+1);
+        let idPuntaje = 'punt' + (i+1);
+        let idStatus = 'status' + (i+1);
+        document.getElementById(idCant).innerHTML = 0; 
+        document.getElementById(idPuntaje).innerHTML = 0;
+        updateIcon(idStatus, true);
+    }
+   
+    const barProgress = document.getElementById('barPuntaje');
+    barProgress.style.width = '0%';
+    barProgress.innerHTML = null;
+    if(barPuntaje.classList.contains('bg-warging')){
+        barPuntaje.classList.remove('bg-warning');
+    }
+    if(barPuntaje.classList.contains('bg-success')){
+        barPuntaje.classList.remove('bg-success');
+    }
+    if(!barPuntaje.classList.contains('bg-danger')) {
+        barPuntaje.classList.add('bg-danger');
+    }
+
+    datos = {
+        long: 0,
+        puntaje: 0,
+        complejidad: 'mala',
+        cantMayus: 0,
+        cantMinus: 0,
+        cantNum: 0,
+        cantSimb: 0,
+        middle: 0,
+        cantReq: 0,
+        requerimientos: false,
+        lastChar: ''
+    }
+
 }
 
 
 function updatesCant(value, tipo) {
     datos.long += value;
-    document.getElementById('cant1').innerHTML = datos.long;
     switch (tipo) {
         case MAYUS: 
             datos.cantMayus += value;
-            document.getElementById('cant2').innerHTML = datos.cantMayus;
             break;
         case MINUS:
             datos.cantMinus += value;
-            document.getElementById('cant3').innerHTML = datos.cantMinus;
             break;
         case NUMERO:
             datos.cantNum += value;
-            document.getElementById('cant4').innerHTML = datos.cantNum;
             break;
         case SIMBOLO:
             datos.cantSimb += value;
-            document.getElementById('cant5').innerHTML = datos.cantSimb;
             break;
         default:
             console.log("Con el espacio no deberia hacer nada");
     }
     checkMiddle();
     checkRequerimientos(value, tipo);
+    updateVistaCant();
 }
 
 function checkMiddle() {
@@ -92,7 +122,6 @@ function checkMiddle() {
         }
     }
     datos.middle = cNum + cSimb;
-    document.getElementById('cant6').innerHTML = datos.middle;
     
 }
 
@@ -170,8 +199,21 @@ function checkRequerimientos(esBorrado, tipo) {
         }
 
     }
-    document.getElementById('cant7').innerHTML = datos.cantReq;
    
+}
+
+function updateVistaCant() {
+    const cantidades = [datos.long,
+                        datos.cantMayus,
+                        datos.cantMinus,
+                        datos.cantNum,
+                        datos.cantSimb,
+                        datos.middle,
+                        datos.cantReq];
+    for(i=0; i<7; i++) {
+        let idCant='cant'+(i+1);
+        document.getElementById(idCant).innerHTML = cantidades[i]; 
+    }
 }
 
 function updateIcon(id, esBorrado) {
@@ -334,6 +376,5 @@ function savePass() {
         localStorage.setItem('PASSWORDS', JSON.stringify(passwords));
     }
 
-    console.log(JSON.parse(localStorage.getItem('PASSWORDS')));
     window.location.href = '../index.html'
 }

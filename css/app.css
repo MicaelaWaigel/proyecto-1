@@ -53,3 +53,22 @@
 .neutral {
     color: #17a2b8;
 }
+
+.capTop {
+    caption-side: top;
+    margin-bottom: -1%;
+    margin-left: 1%;
+}
+
+.lastsTable {
+    margin-top: -3%;
+}
+
+.contJumb {
+    margin-top: -2%;
+    margin-bottom: -2;
+}
+
+.minusTop {
+    margin-top: -3%;
+}
