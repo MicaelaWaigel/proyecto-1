@@ -12,7 +12,7 @@
 }
 
 .tam {
-    margin-top: 3%;
+    margin-top: 1%;
     width: 95%;
 }
 
@@ -72,3 +72,16 @@
 .minusTop {
     margin-top: -3%;
 }
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:#dc3545;
+    height: 2px;
+  }
+
+  .center-button {
+      margin-left: 2%;
+  }

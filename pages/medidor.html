@@ -42,9 +42,10 @@
                             <div class="tamPunt">
                                 <label for="complejidad">Complejidad</label>
                             </div>
-                            <div class="tamPunt">
+                            <div class="tamPunt center-button">
                                 <button type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="savePass()">Guardar Medición</button>
                             </div>
+                            <hr>
                             <h5 class="card-title text-center">Requerimientos Mínimos</h5>
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -74,65 +75,65 @@
             <div class="col-sm">
                 <table class="table table-sm table-bordered">
                     <caption class="capTop">Adicciones</caption>
-                    <thead>
-                    <tr>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Requerimiento</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Puntaje</th>
-                    </tr>
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Requerimiento</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Puntaje</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td><i id='status1' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Número de caracteres</td>
-                        <td>+(n*4)</td>
-                        <td id='cant1'>0</td>
-                        <td id='punt1'>0</td>
-                    </tr>
-                    <tr>
-                        <td><i id='status2' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Letras Mayúsculas</td>
-                        <td>+((long-n)*2)</td>
-                        <td id='cant2'>0</td>
-                        <td id='punt2'>0</td>
-                    </tr>
-                    <tr>
-                        <td><i id='status3' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Letras Minúsculas</td>
-                        <td>+((long-n)*2)</td>
-                        <td id='cant3'>0</td>
-                        <td id='punt3'>0</td>
-                    </tr>
-                    <tr>
-                        <td><i id='status4' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Números</td>
-                        <td>+(n*4)</td>
-                        <td id='cant4'>0</td>
-                        <td id='punt4'>0</td>
-                    </tr>
-                    <tr>
-                        <td><i id='status5' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Simbolos</td>
-                        <td>+(n*6)</td>
-                        <td id='cant5'>0</td>
-                        <td id='punt5'>0</td>
-                    </tr>
-                    <tr>
-                        <td><i id='status6' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Números o Simbolos en medio</td>
-                        <td>+(n*2)</td>
-                        <td id='cant6'>0</td>
-                        <td id='punt6'>0</td>
-                    </tr>
-                    <tr>
-                        <td><i id='status7' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                        <td>Requerimientos</td>
-                        <td>+(n*2)</td>
-                        <td id='cant7'>0</td>
-                        <td id='punt7'>0</td>
-                    </tr>
+                    <tbody class="text-center">
+                        <tr>
+                            <td><i id='status1' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Número de caracteres</td>
+                            <td>+(n*4)</td>
+                            <td id='cant1'>0</td>
+                            <td id='punt1'>0</td>
+                        </tr>
+                        <tr>
+                            <td><i id='status2' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Letras Mayúsculas</td>
+                            <td>+((long-n)*2)</td>
+                            <td id='cant2'>0</td>
+                            <td id='punt2'>0</td>
+                        </tr>
+                        <tr>
+                            <td><i id='status3' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Letras Minúsculas</td>
+                            <td>+((long-n)*2)</td>
+                            <td id='cant3'>0</td>
+                            <td id='punt3'>0</td>
+                        </tr>
+                        <tr>
+                            <td><i id='status4' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Números</td>
+                            <td>+(n*4)</td>
+                            <td id='cant4'>0</td>
+                            <td id='punt4'>0</td>
+                        </tr>
+                        <tr>
+                            <td><i id='status5' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Simbolos</td>
+                            <td>+(n*6)</td>
+                            <td id='cant5'>0</td>
+                            <td id='punt5'>0</td>
+                        </tr>
+                        <tr>
+                            <td><i id='status6' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Números o Simbolos en medio</td>
+                            <td>+(n*2)</td>
+                            <td id='cant6'>0</td>
+                            <td id='punt6'>0</td>
+                        </tr>
+                        <tr>
+                            <td><i id='status7' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                            <td>Requerimientos</td>
+                            <td>+(n*2)</td>
+                            <td id='cant7'>0</td>
+                            <td id='punt7'>0</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -211,6 +212,7 @@
 
 
     <!-- JavaScript -->
+    <script src="../js/updateVista.js"></script>
     <script src="../js/medidor.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

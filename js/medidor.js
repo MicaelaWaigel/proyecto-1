@@ -8,7 +8,6 @@ const BORRADO = 'BORRADO';
 let password = '';
 let datos = {
     long: 0,
-    puntaje: 0,
     complejidad: 'mala',
     cantMayus: 0,
     cantMinus: 0,
@@ -18,6 +17,16 @@ let datos = {
     cantReq: 0,
     requerimientos: false,
     lastChar: ''
+};
+let puntaje = {
+    total: 0,
+    puntLong: 0,
+    puntMayus: 0,
+    puntMinus: 0,
+    puntNum: 0,
+    puntSimb: 0,
+    puntMiddle: 0,
+    puntReq: 0
 }
 
 
@@ -44,31 +53,8 @@ function update(event) {
 }
 
 function resetAll() {
-    for(i=0; i<7; i++) {
-        let idCant='cant'+(i+1);
-        let idPuntaje = 'punt' + (i+1);
-        let idStatus = 'status' + (i+1);
-        document.getElementById(idCant).innerHTML = 0; 
-        document.getElementById(idPuntaje).innerHTML = 0;
-        updateIcon(idStatus, true);
-    }
-   
-    const barProgress = document.getElementById('barPuntaje');
-    barProgress.style.width = '0%';
-    barProgress.innerHTML = null;
-    if(barPuntaje.classList.contains('bg-warging')){
-        barPuntaje.classList.remove('bg-warning');
-    }
-    if(barPuntaje.classList.contains('bg-success')){
-        barPuntaje.classList.remove('bg-success');
-    }
-    if(!barPuntaje.classList.contains('bg-danger')) {
-        barPuntaje.classList.add('bg-danger');
-    }
-
     datos = {
         long: 0,
-        puntaje: 0,
         complejidad: 'mala',
         cantMayus: 0,
         cantMinus: 0,
@@ -78,9 +64,22 @@ function resetAll() {
         cantReq: 0,
         requerimientos: false,
         lastChar: ''
+    };
+    puntaje = {
+        total: 0,
+        puntLong: 0,
+        puntMayus: 0,
+        puntMinus: 0,
+        puntNum: 0,
+        puntSimb: 0,
+        puntMiddle: 0,
+        puntReq: 0
     }
 
+    resetAllVista()
 }
+
+
 
 
 function updatesCant(value, tipo) {
@@ -111,16 +110,6 @@ function checkMiddle() {
     passMiddle = password.slice(1,-1);
     const cNum = getNum(passMiddle);
     const cSimb = getSimb(passMiddle);
-    if (datos.middle === 0) {
-        if ((cNum + cSimb) > 0) {
-            updateIcon('status6', false);
-        }
-    } else {
-        console.log(datos.middle);
-        if ((cNum + cSimb) === 0) {
-            updateIcon('status6', true);
-        }
-    }
     datos.middle = cNum + cSimb;
     
 }
@@ -150,89 +139,47 @@ function checkRequerimientos(esBorrado, tipo) {
     if (esBorrado === -1) {
         if ((tipo === MAYUS) && (datos.cantMayus === 0)) {
             datos.cantReq--;
-            updateIcon('status2', true);
         }
         if ((tipo === MINUS) && (datos.cantMinus === 0)) {
             datos.cantReq--;
-            updateIcon('status3', true);
         }
         if ((tipo === NUMERO) && (datos.cantNum === 0)) {
             datos.cantReq--;
-            updateIcon('status4', true);
         }
         if ((tipo === SIMBOLO) && (datos.cantSimb === 0)) {
             datos.cantReq--;
-            updateIcon('status5', true);
         }
         if (datos.long === 7) {
             datos.cantReq--;
-            updateIcon('status1', true);
         }
         if (datos.cantReq === 4) {
             datos.requerimientos = false;
-            updateIcon('status7', true);
         }
     } else {
         if ((tipo === MAYUS) && (datos.cantMayus === 1)) {
             datos.cantReq++;
-            updateIcon('status2', false);
         }
         if ((tipo === MINUS) && (datos.cantMinus === 1)) {
             datos.cantReq++;
-            updateIcon('status3', false);
         }
         if ((tipo === NUMERO) && (datos.cantNum === 1)) {
             datos.cantReq++;
-            updateIcon('status4', false);
         }
         if ((tipo === SIMBOLO) && (datos.cantSimb === 1)) {
             datos.cantReq++;
-            updateIcon('status5', false);
         }
         if (datos.long === 8) {
             datos.cantReq++;
-            updateIcon('status1', false);
         }
         if (datos.cantReq === 5) {
             datos.requerimientos = true;
-            updateIcon('status7', false);
         }
 
     }
    
 }
 
-function updateVistaCant() {
-    const cantidades = [datos.long,
-                        datos.cantMayus,
-                        datos.cantMinus,
-                        datos.cantNum,
-                        datos.cantSimb,
-                        datos.middle,
-                        datos.cantReq];
-    for(i=0; i<7; i++) {
-        let idCant='cant'+(i+1);
-        document.getElementById(idCant).innerHTML = cantidades[i]; 
-    }
-}
 
-function updateIcon(id, esBorrado) {
-    if (id != '') {
-        const icono = document.getElementById(id);
-        if (esBorrado) {
-            icono.classList.remove('ok');
-            icono.classList.remove('fa-check-circle');
-            icono.classList.add('fa-times-circle');
-            icono.classList.add('mal');
-        } else {
-            icono.classList.remove('mal');
-            icono.classList.remove('fa-times-circle');
-            icono.classList.add('ok');
-            icono.classList.add('fa-check-circle');
-        }
-    }
-    
-}
 
 function getTipo(char) {
     
@@ -263,81 +210,30 @@ function getTipo(char) {
 }
 
 function updatePuntaje() {
-    const punt = datos.long*4;
-    document.getElementById('punt1').innerHTML = punt;
-    
-    let puntMayus = 0;
-    if (datos.cantMayus > 0){
-        puntMayus = (datos.long - datos.cantMayus)*2;
-        document.getElementById('punt2').innerHTML = puntMayus;
+    puntaje.puntLong = datos.long*4;
+    puntaje.puntMayus = 0;
+    if(datos.cantMayus > 0) {
+        puntaje.puntMayus = (datos.long - datos.cantMayus)*2;
+    }
+    puntaje.puntMinus = 0;
+    if(datos.cantMinus > 0) {
+        puntaje.puntMinus = (datos.long - datos.cantMinus)*2;
+    }
+    puntaje.puntNum = datos.cantNum*4;
+    puntaje.puntSimb = datos.cantSimb*6;
+    puntaje.puntMiddle = datos.middle*2;
+    if((datos.requerimientos)){
+        puntaje.puntReq = datos.cantReq*2;
     }
     
-    let puntMinus = 0;
-    if (datos.cantMinus > 0) {
-        puntMinus = (datos.long - datos.cantMinus)*2;
-        document.getElementById('punt3').innerHTML = puntMinus;
-    }
-    
-    const puntNum = datos.cantNum*4;
-    document.getElementById('punt4').innerHTML = puntNum;
-    const puntSimb = datos.cantSimb*6;
-    document.getElementById('punt5').innerHTML = puntSimb;
-    const puntMiddle = datos.middle*2;
-    document.getElementById('punt6').innerHTML = puntMiddle;
+    puntaje.total = puntaje.puntLong + puntaje.puntMayus + puntaje.puntMinus + puntaje.puntNum + puntaje.puntSimb + puntaje.puntMiddle + puntaje.puntReq;
 
-    let puntReq = 0;
-    if (datos.requerimientos) {
-        puntReq = datos.cantReq*2;
-    }
-    document.getElementById('punt7').innerHTML = puntReq;
-
-    datos.puntaje = punt + puntMayus + puntMinus + puntNum + puntSimb + puntMiddle + puntReq;  
-    
-    //Cambio de color la barra de progreso de acuerdo al puntaje
-    let barPuntaje =document.getElementById('barPuntaje');
-
-    if (datos.puntaje > 44) {
-        if(barPuntaje.classList.contains('bg-warging')){
-            barPuntaje.classList.remove('bg-warning');
-        }
-        if(!barPuntaje.classList.contains('bg-danger')) {
-            barPuntaje.classList.add('bg-danger');
-        }
-    }
-
-    if (datos.puntaje > 44) {
-        if(barPuntaje.classList.contains('bg-danger')){
-            barPuntaje.classList.remove('bg-danger');
-        } else {
-            if(barPuntaje.classList.contains('bg-success')) {
-                barPuntaje.classList.remove('bg-success');
-            }
-        }
-        if(!barPuntaje.classList.contains('bg-warning')){
-            barPuntaje.classList.add('bg-warning');
-        }
-        
-    }
-
-    if (datos.puntaje > 75) {
-        if (barPuntaje.classList.contains('bg-warning')){
-            barPuntaje.classList.remove('bg-warning');
-        }
-        if (!barPuntaje.classList.contains('bg-success')) {
-            barPuntaje.classList.add('bg-success');
-        }
-        
-    }
-    
-    if(datos.puntaje > 100) {
-        barPuntaje.style.width = '100%';
-        barPuntaje.innerHTML = '100%';
-    } else {
-        barPuntaje.style.width = datos.puntaje + '%';
-        barPuntaje.innerHTML = datos.puntaje + '%';
-    }
+    updateVistaPuntajes();
+    updatesIconos();
     
 }
+
+
 
 function ocultarPass(event) {
     const iPass = document.getElementById('password');
@@ -357,7 +253,10 @@ function savePass() {
         const passwords = [];
         const pass = {
             password,
-            datos
+            datos: {
+                puntaje: puntaje.total,
+                complejidad: datos.complejidad
+            }
         };
         passwords.push(pass);
         localStorage.setItem('PASSWORDS', JSON.stringify(passwords));
@@ -369,7 +268,10 @@ function savePass() {
         } 
         const pass = {
             password,
-            datos
+            datos: {
+                puntaje: puntaje.total,
+                complejidad: datos.complejidad
+            }
         };
         passwords.push(pass);
         localStorage.removeItem('PASSWORDS');
