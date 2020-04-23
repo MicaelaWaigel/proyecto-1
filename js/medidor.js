@@ -4,11 +4,15 @@ const NUMERO = 'NUMERO';
 const SIMBOLO = 'SIMBOLO';
 const ESPACIO = 'ESPACIO';
 const BORRADO = 'BORRADO';
+const COMP_MALA = 'Mala';
+const COMP_MEDIA = 'Media';
+const COMP_BUENA = 'Buena';
+const COMP_EXELENTE = 'Exelente';
 
 let password = '';
 let datos = {
     long: 0,
-    complejidad: 'mala',
+    complejidad: COMP_MALA,
     cantMayus: 0,
     cantMinus: 0,
     cantNum: 0,
@@ -55,7 +59,7 @@ function update(event) {
 function resetAll() {
     datos = {
         long: 0,
-        complejidad: 'mala',
+        complejidad: COMP_MALA,
         cantMayus: 0,
         cantMinus: 0,
         cantNum: 0,
@@ -227,6 +231,19 @@ function updatePuntaje() {
     }
     
     puntaje.total = puntaje.puntLong + puntaje.puntMayus + puntaje.puntMinus + puntaje.puntNum + puntaje.puntSimb + puntaje.puntMiddle + puntaje.puntReq;
+    
+    if ((puntaje.total > 44) && (puntaje.total <= 70)) {
+        datos.complejidad = COMP_MEDIA;
+    } else {
+        if ((puntaje.total > 70) && (puntaje.total <= 90)) {
+            datos.complejidad = COMP_BUENA;
+        } else {
+            if ((puntaje.total > 90)) {
+                datos.complejidad = COMP_EXELENTE;
+            }
+        }
+    }
+
 
     updateVistaPuntajes();
     updatesIconos();

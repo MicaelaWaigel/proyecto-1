@@ -14,7 +14,7 @@ function cargarTabla() {
         }
     } else {
         const trOpen = '<tr>';
-        const fCell = '<td>' + '1' + '</td>';
+        const fCell = '<td>-</td>';
         const sCell = '<td>-</td>';
         const tCell = '<td>-</td>';
         const cCell = '<td>-</td>';

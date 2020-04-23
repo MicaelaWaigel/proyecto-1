@@ -28,12 +28,13 @@ function updateVistaPuntajes() {
     }
 
     updateVistaBarProgress();
+    document.getElementById('complejidad').innerHTML = datos.complejidad;
 }
 
 function updateVistaBarProgress() {
     let barPuntaje =document.getElementById('barPuntaje');
 
-    if (puntaje.total > 44) {
+    if (puntaje.total < 44) {
         if(barPuntaje.classList.contains('bg-warging')){
             barPuntaje.classList.remove('bg-warning');
         }
