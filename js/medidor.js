@@ -187,7 +187,7 @@ function getTipo(char) {
     
 }
 function savePass() {
-   const passStorage = localStorage.getItem('PASSWORDS');
+    const passStorage = localStorage.getItem('PASSWORDS');
     
     if (passStorage == null){
         const passwords = [];
