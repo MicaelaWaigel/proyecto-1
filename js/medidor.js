@@ -194,8 +194,8 @@ function savePass() {
         const pass = {
             password,
             datos: {
-                puntaje: datos[i],
-                complejidad: datos[i]
+                puntaje: datos[0],
+                complejidad: datos[1]
             }
         };
         passwords.push(pass);
@@ -209,8 +209,8 @@ function savePass() {
         const pass = {
             password,
             datos: {
-                puntaje: datos[i],
-                complejidad: datos[i]
+                puntaje: datos[0],
+                complejidad: datos[1]
             }
         };
         passwords.push(pass);
