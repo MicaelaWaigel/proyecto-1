@@ -1,192 +1,197 @@
-function updateVistaPuntajes() {
-    
-    for(i=1; i<8; i++) {
-        let id = 'punt' + i;
-        switch(i) {
-            case 1:
-                document.getElementById(id).innerHTML = puntaje.puntLong;
-                break;
-            case 2:
-                document.getElementById(id).innerHTML = puntaje.puntMayus;
-                break;
-            case 3:
-                document.getElementById(id).innerHTML = puntaje.puntMinus;
-                break;
-            case 4:
-                document.getElementById(id).innerHTML = puntaje.puntNum;
-                break;
-            case 5:
-                document.getElementById(id).innerHTML = puntaje.puntSimb;
-                break;
-            case 6:
-                document.getElementById(id).innerHTML = puntaje.puntMiddle;
-                break;
-            case 7:
-                document.getElementById(id).innerHTML = puntaje.puntReq;
-                break;
-        }
-    }
+const COMP_MALA = 'Mala';
+const COMP_MEDIA = 'Media';
+const COMP_BUENA = 'Buena';
+const COMP_EXELENTE = 'Exelente';
 
-    updateVistaBarProgress();
-    document.getElementById('complejidad').innerHTML = datos.complejidad;
+let complejidad = COMP_MALA;
+
+function updateVista(cantAdd, cantDed, puntAdd, puntDed) {
+
+    let totalAdd = vistaAdiciones(cantAdd, puntAdd);
+    let totalDed = vistaDeducciones(cantDed, puntDed);
+
+    const puntTotal = totalAdd - totalDed;
+
+    vistaProgressBar(puntTotal);
+
+    return [puntTotal, complejidad];
 }
 
-function updateVistaBarProgress() {
-    let barPuntaje =document.getElementById('barPuntaje');
+function vistaAdiciones(cantAdd, puntAdd) {
+    let total = 0;
+    let cantValues = Object.values(cantAdd);
+    let puntValues = Object.values(puntAdd);
+    for (i=1; i<8; i++){
+        let idCant = 'cant' + i;
+        let idPunt = 'punt' + i;
+        document.getElementById(idCant).innerHTML = cantValues[i-1];
+        document.getElementById(idPunt).innerHTML = puntValues[i-1];
+        total += puntValues[i-1];
+        updateIconosAdiciones(cantValues[i-1], i);
+    }
+    
+    return total;
+}
 
-    if (puntaje.total < 44) {
+function updateIconosAdiciones(cantValue, i) {
+
+    const id = 'status' + i;
+    const icono = document.getElementById(id);
+
+    if(i === 1) {
+        if ( cantValue >= 8 ) {
+            changeIconAdd(icono, true);
+        } else {
+            changeIconAdd(icono, false);
+        }
+    } else {
+        if( (i > 1) && (i < 7) ) {
+            if ( cantValue > 0 ){
+                changeIconAdd(icono, true);
+            } else {
+                changeIconAdd(icono, false)
+            }
+        } else { // i === 7
+            if ( cantValue === 5 ) {
+                changeIconAdd(icono, true);
+            } else {
+                changeIconAdd(icono, false);
+            }
+        }
+    }
+}
+
+function changeIconAdd(icon, ok) {
+    if (ok) {
+        if (icon.classList.contains('mal')) {
+            icon.classList.remove('mal');
+            icon.classList.remove('fa-times-circle');
+            icon.classList.add('ok');
+            icon.classList.add('fa-check-circle');
+        }
+    } else {
+        if (icon.classList.contains('ok')) {
+            icon.classList.remove('ok');
+            icon.classList.remove('fa-check-circle');
+            icon.classList.add('mal');
+            icon.classList.add('fa-times-circle');
+        }
+    }
+    
+}
+
+
+function vistaDeducciones(cantDed, puntDed){
+    let total = 0;
+    let cantValues = Object.values(cantDed);
+    let puntValues = Object.values(puntDed);
+    for (i=8; i<15; i++){
+        let idCant = 'cant' + i;
+        let idPunt = 'punt' + i;
+        document.getElementById(idCant).innerHTML = cantValues[i-8];
+        puntValues[i-8] === 0 ? 
+            document.getElementById(idPunt).innerHTML = puntValues[i-8] : 
+            document.getElementById(idPunt).innerHTML = '-' + puntValues[i-8];
+        
+        total += puntValues[i-8];
+        updateIconosDeducciones(cantValues[i-8], i);
+
+    }
+
+    return total;
+}
+
+
+function updateIconosDeducciones(cantValue, i) {
+    const id = 'status' + i;
+    const icono = document.getElementById(id);
+    if (cantValue > 0) {
+        changeIconDed(icono, false);
+    } else {
+        changeIconDed(icono, true);
+    }
+}
+
+function changeIconDed(icon, neutral) {
+
+    if (neutral) {
+        if (icon.classList.contains('warning')) {
+            icon.classList.remove('warning');
+            icon.classList.remove('fa-exclamation-circle');
+            icon.classList.add('neutral');
+            icon.classList.add('fa-minus-circle');
+        }
+    } else {
+        if (icon.classList.contains('neutral')) {
+            icon.classList.remove('neutral');
+            icon.classList.remove('fa-minus-circle');
+            icon.classList.add('warning');
+            icon.classList.add('fa-exclamation-circle');
+        }
+        
+        
+    }
+}
+
+function vistaProgressBar (puntTotal) {
+    let barPuntaje = document.getElementById('barPuntaje');
+    let badgeComp = document.getElementById('complejidad');
+
+    if (puntTotal < 44) {
         if(barPuntaje.classList.contains('bg-warging')){
             barPuntaje.classList.remove('bg-warning');
+            badgeComp.classList.remove('badge-warning');
         }
         if(!barPuntaje.classList.contains('bg-danger')) {
             barPuntaje.classList.add('bg-danger');
+            badgeComp.classList.add('badge-danger');
         }
+        complejidad = COMP_MALA;
     }
 
-    if (puntaje.total > 44) {
+    if (puntTotal > 44) {
         if(barPuntaje.classList.contains('bg-danger')){
             barPuntaje.classList.remove('bg-danger');
+            badgeComp.classList.remove('badge-danger');
         } else {
             if(barPuntaje.classList.contains('bg-success')) {
                 barPuntaje.classList.remove('bg-success');
+                badgeComp.classList.remove('badge-success');
             }
         }
         if(!barPuntaje.classList.contains('bg-warning')){
             barPuntaje.classList.add('bg-warning');
+            badgeComp.classList.add('badge-warning');
         }
-        
+        complejidad = COMP_MEDIA;
     }
 
-    if (puntaje.total > 75) {
+    if (puntTotal > 75) {
         if (barPuntaje.classList.contains('bg-warning')){
             barPuntaje.classList.remove('bg-warning');
+            badgeComp.classList.remove('badge-warning');
         }
         if (!barPuntaje.classList.contains('bg-success')) {
             barPuntaje.classList.add('bg-success');
+            badgeComp.classList.add('badge-success');
+        }
+        complejidad = COMP_BUENA;
+    }
+    
+    if(puntTotal > 100) {
+        barPuntaje.style.width = '100%';
+        barPuntaje.innerHTML = '100%';
+        complejidad = COMP_EXELENTE;
+    } else {
+        if (puntTotal < 0) {
+            barPuntaje.style.width = '0%';
+            barPuntaje.innerHTML = '0%';
+        } else {
+            barPuntaje.style.width = puntTotal + '%';
+            barPuntaje.innerHTML = puntTotal + '%';
         }
         
     }
-    
-    if(puntaje.total > 100) {
-        barPuntaje.style.width = '100%';
-        barPuntaje.innerHTML = '100%';
-    } else {
-        barPuntaje.style.width = puntaje.total + '%';
-        barPuntaje.innerHTML = puntaje.total + '%';
-    }
-}
 
-function updatesIconos() {
-    for(i=1; i<8; i++) {
-        let id = 'status' + i;
-        switch(i) {
-            case 1:
-                if (datos.long === 8) {
-                    updateIcon(id, false);
-                }
-                if (datos.long < 8) {
-                    updateIcon(id, true);
-                }
-                break;
-            case 2:
-                if (datos.cantMayus > 0) {
-                    updateIcon(id, false);
-                } else {
-                    updateIcon(id, true);
-                }
-                break;
-            case 3:
-                if (datos.cantMinus > 0) {
-                    updateIcon(id, false);
-                } else {
-                    updateIcon(id, true);
-                }
-                break;
-            case 4:
-                if (datos.cantNum > 0) {
-                    updateIcon(id, false);
-                } else {
-                    updateIcon(id, true);
-                }
-                break;
-            case 5:
-                if (datos.cantSimb > 0) {
-                    updateIcon(id, false);
-                } else {
-                    updateIcon(id, true);
-                }
-                break;
-            case 6:
-                if (datos.middle > 0) {
-                    updateIcon(id, false);
-                } else {
-                    updateIcon(id, true);
-                }
-                break;
-            case 7:
-                if (datos.requerimientos){
-                    updateIcon(id, false);
-                } else {
-                    updateIcon(id, true);
-                }
-        }
-    }
-}
-
-function updateIcon(id, esBorrado) {
-    if (id != '') {
-        const icono = document.getElementById(id);
-        if (esBorrado) {
-            icono.classList.remove('ok');
-            icono.classList.remove('fa-check-circle');
-            icono.classList.add('fa-times-circle');
-            icono.classList.add('mal');
-        } else {
-            icono.classList.remove('mal');
-            icono.classList.remove('fa-times-circle');
-            icono.classList.add('ok');
-            icono.classList.add('fa-check-circle');
-        }
-    }
-    
-}
-
-function updateVistaCant() {
-    const cantidades = [datos.long,
-                        datos.cantMayus,
-                        datos.cantMinus,
-                        datos.cantNum,
-                        datos.cantSimb,
-                        datos.middle,
-                        datos.cantReq];
-    for(i=0; i<7; i++) {
-        let idCant='cant'+(i+1);
-        document.getElementById(idCant).innerHTML = cantidades[i]; 
-    }
-}
-
-function resetAllVista() {
-    for(i=0; i<7; i++) {
-        let idCant='cant'+(i+1);
-        let idPuntaje = 'punt' + (i+1);
-        let idStatus = 'status' + (i+1);
-        document.getElementById(idCant).innerHTML = 0; 
-        document.getElementById(idPuntaje).innerHTML = 0;
-        updateIcon(idStatus, true);
-    }
-   
-    const barProgress = document.getElementById('barPuntaje');
-    barProgress.style.width = '0%';
-    barProgress.innerHTML = null;
-    if(barPuntaje.classList.contains('bg-warging')){
-        barPuntaje.classList.remove('bg-warning');
-    }
-    if(barPuntaje.classList.contains('bg-success')){
-        barPuntaje.classList.remove('bg-success');
-    }
-    if(!barPuntaje.classList.contains('bg-danger')) {
-        barPuntaje.classList.add('bg-danger');
-    }
-
-
+    document.getElementById('complejidad').innerHTML = complejidad;
 }

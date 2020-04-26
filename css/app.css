@@ -1,58 +1,7 @@
-#contenedor {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.space{
-    margin-top: 2%;
-}
-
 .title {
     margin-left: 10%;
 }
 
-.tam {
-    margin-top: 1%;
-    width: 95%;
-}
-
-.tamPunt {
-    margin-top: 6%;
-    margin-bottom: 6%;
-    width: 95%;
-}
-
-.tamBar{
-    margin-left: 3%;
-    margin-top: 1%;
-    margin-bottom: 2%;
-    width: 100%;
-}
-
-.posBar {
-    margin-left: 1%;
-}
-
-.pos {
-    padding-top: 1%;
-    margin-left: 5%;
-}
-
-.mal {
-    color: #dc3545;
-}
-
-.ok {
-    color: #28a745;
-}
-
-.warning {
-    color: #ffc107;
-}
-
-.neutral {
-    color: #17a2b8;
-}
 
 .capTop {
     caption-side: top;
@@ -60,18 +9,15 @@
     margin-left: 1%;
 }
 
-.lastsTable {
+.lastsTable { /*index only*/
     margin-top: -3%;
 }
 
-.contJumb {
+.contJumb { /*index only*/
     margin-top: -2%;
     margin-bottom: -2;
 }
 
-.minusTop {
-    margin-top: -3%;
-}
 
 hr {
     border: 0;
@@ -82,10 +28,3 @@ hr {
     height: 2px;
   }
 
-  .center-button {
-      margin-left: 2%;
-  }
-
-  .posComplejidad {
-      margin-left: 50%;
-  }
