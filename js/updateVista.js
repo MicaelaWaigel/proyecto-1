@@ -17,6 +17,10 @@ function updateVista(cantAdd, cantDed, puntAdd, puntDed) {
     return [puntTotal, complejidad];
 }
 
+/*
+    Actualiza la vista de la tabla de los requerimientos que 
+    agregan valor a la password
+*/
 function vistaAdiciones(cantAdd, puntAdd) {
     let total = 0;
     let cantValues = Object.values(cantAdd);
@@ -33,6 +37,10 @@ function vistaAdiciones(cantAdd, puntAdd) {
     return total;
 }
 
+/*
+    Actualiza los iconos de la tabla de requerimientos que
+    agregan valor a la password
+*/
 function updateIconosAdiciones(cantValue, i) {
 
     const id = 'status' + i;
@@ -80,7 +88,10 @@ function changeIconAdd(icon, ok) {
     
 }
 
-
+/*
+    Actualiza la vista de la tabla de los requerimientos que 
+    quitan valor a la password
+*/
 function vistaDeducciones(cantDed, puntDed){
     let total = 0;
     let cantValues = Object.values(cantDed);
@@ -101,7 +112,10 @@ function vistaDeducciones(cantDed, puntDed){
     return total;
 }
 
-
+/*
+    Actualiza los iconos de la tabla de requerimientos que
+    quitan valor a la password
+*/
 function updateIconosDeducciones(cantValue, i) {
     const id = 'status' + i;
     const icono = document.getElementById(id);
@@ -133,6 +147,10 @@ function changeIconDed(icon, neutral) {
     }
 }
 
+/*
+    Actualiza los valores de la barra de progreso que representa
+    el puntaje de la password analizada, y su complejidad.
+*/
 function vistaProgressBar (puntTotal) {
     let barPuntaje = document.getElementById('barPuntaje');
     let badgeComp = document.getElementById('complejidad');

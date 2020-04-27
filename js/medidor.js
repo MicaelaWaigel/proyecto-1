@@ -21,6 +21,12 @@ function update(event){
     datos = updateVista(cantAdiciones, cantDeducciones, puntajesAdiciones, puntajesDeduciones);
 }
 
+/*
+    Calcula las cantidades de mayusculas, minusculas, numeros, simbolos,
+    de numeros y simbolos en el medio de la password, los requerimientos 
+    cumplidos y la cantidad total de caracteres en el password dado. Luego,
+    retorna el objeto con las cantidades.
+*/
 function calcularCantidades(password) {
     const long = password.length;
     let cantidades = {
@@ -75,6 +81,10 @@ function calcularCantidades(password) {
     return cantidades;
 }
 
+/*
+    Calcula los puntajes que agregan valor al password, 
+    luego retorna el objeto conteniendo dichos puntajes.
+*/
 function calcularPuntajesAdiciones(cantidades) {
     let puntajes = {
         puntLong: cantidades.cantChar*4,
@@ -89,6 +99,12 @@ function calcularPuntajesAdiciones(cantidades) {
     return puntajes;
 }
 
+/*
+    Determina las malas practicas en el password dado. Estas son
+    si contiene solo numeros, solo letras, cantidad de mayusculas,
+    minusculas o numeros consecutivos, asi como letras y numeros
+    secuenciales. Luego, retorna el objetos.
+*/
 function calcularDeducciones(password, cantidades) {
     let deducciones = {
         soloNumeros: 0,
@@ -138,6 +154,10 @@ function calcularDeducciones(password, cantidades) {
 
 }
 
+/*
+    Calcula el puntaje para las malas practicas y luego 
+    retorna el objeto.
+*/
 function calcularPuntajesDeducciones(adicciones, deducciones) {
     let puntajes = {
         puntSoloNumeros: ((deducciones.soloNumeros > 0) ? adicciones.cantChar : 0),
@@ -152,6 +172,12 @@ function calcularPuntajesDeducciones(adicciones, deducciones) {
     return puntajes;
 }
 
+/*
+    Determina si dos valores en el password analizado
+    son secuenciales haciendo uso de los valores ASCII
+    para los caracteres. Retorna verdadero si lo son, 
+    falso en caso contrario.
+*/
 function esSecuencial(password, i) {
     let asciiPrev = password.toLowerCase().charCodeAt(i-1);
     let asciiActual = password.toLowerCase().charCodeAt(i);
@@ -162,7 +188,10 @@ function esSecuencial(password, i) {
     }
 }
 
-
+/*
+    Determina el tipo de cierto caracter a ser analizado.
+    Retorna una constante significativa.
+*/
 function getTipo(char) {
     
     if (char === ' ') {
@@ -187,6 +216,9 @@ function getTipo(char) {
     
 }
 
+/*
+    Oculta o muestra el password en el input del medidor.
+*/
 function ocultarPass(event) {
     const iPass = document.getElementById('password');
     if (event.target.checked) {
@@ -197,7 +229,11 @@ function ocultarPass(event) {
     
 }
 
-
+/*
+    Almacena la contraseña en el Almacenamiento local del navegador.
+    Solo guarda las ultimas 5, por lo que se reemplazara la password
+    mas antigua cuando ya no quede espacio.
+*/
 function savePass() {
     const passStorage = localStorage.getItem('PASSWORDS');
     
