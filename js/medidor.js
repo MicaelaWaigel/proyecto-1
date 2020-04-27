@@ -186,6 +186,18 @@ function getTipo(char) {
     }
     
 }
+
+function ocultarPass(event) {
+    const iPass = document.getElementById('password');
+    if (event.target.checked) {
+        iPass.type = 'password';
+    } else {
+        iPass.type = 'text';
+    }
+    
+}
+
+
 function savePass() {
     const passStorage = localStorage.getItem('PASSWORDS');
     

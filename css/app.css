@@ -1,7 +1,11 @@
 .title {
-    margin-left: 10%;
+    margin-left: 12%;
+    color: whitesmoke !important;
 }
 
+.title2 {
+    margin-left: 10%;
+}
 
 .capTop {
     caption-side: top;
@@ -26,5 +30,20 @@ hr {
     width: 96%;               
     background-color:#dc3545;
     height: 2px;
+  }
+
+  .navColor {
+    background-image: linear-gradient(to bottom right, firebrick, black);
+  }
+
+  .jumb {
+      /*background-color: white !important;*/
+      background-image: linear-gradient(to bottom right, white, firebrick);
+      margin-top: 2%;
+  }
+
+  .margenes {
+      margin-left: 5% !important;
+      margin-right: 5% !important;
   }
 
