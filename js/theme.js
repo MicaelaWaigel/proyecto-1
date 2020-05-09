@@ -30,7 +30,7 @@ function checkThemeMedidor() {
     const tema = window.localStorage.getItem('TEMA');
     console.log(tema);
     if (tema != null) {
-        if(tema == 'Azul') {
+        if(tema == 'Azul') {y
             changeThemeMedidor('Azul');
         }
     }
