@@ -1,6 +1,5 @@
 
 function checkTheme() {
-    console.log('CheckTheme');
     const tema = window.localStorage.getItem('TEMA');
     if (tema != null) {
         if(tema == 'Azul') {
@@ -28,7 +27,6 @@ function changeTheme(tema){
 
 function checkThemeMedidor() {
     const tema = window.localStorage.getItem('TEMA');
-    console.log(tema);
     if (tema != null) {
         if(tema == 'Azul') {
             changeThemeMedidor('Azul');
@@ -47,7 +45,6 @@ function changeThemeMedidor(tema) {
         for(i=0; i<cambiosRed.length; i++){
             cambio(cambiosRed[i], cambiosBlue[i]);
         }
-        console.log(document.getElementById('password').classList);
     } else {
         if(computedStyle('--color-theme') != 'firebrick') {
             document.documentElement.style.setProperty('--color-theme', 'firebrick');
