@@ -1,4 +1,4 @@
-function cargarTabla() {
+function cargarTablaAndTema() {
     const tablaStorage = document.getElementById('tablaStorage');
     const passwords = JSON.parse(window.localStorage.getItem('PASSWORDS'));
     if (passwords != null){
@@ -22,5 +22,8 @@ function cargarTabla() {
         const celdas = fCell + sCell + tCell + cCell;
         tablaStorage.innerHTML = trOpen + celdas + trClose;
     }
+
+    checkTheme();
     
 }
+

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/medidor.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>Proyecto 1</title>
   </head>
-  <body>
+  <body onload='checkThemeMedidor()'>
     <nav class="navbar navbar-light navColor">
         <a class="navbar-brand title d-flex" href="../index.html">
           <img src="../resources/icon-white.png" width="40" height="40" class="d-inline-block align-top" alt="">
@@ -157,14 +157,14 @@
                         <tr>
                             <td><i id='status8' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
                             <td>Solo números</td>
-                            <td>-n</td>
+                            <td>-(n*2)</td>
                             <td id='cant8'>0</td>
                             <td id='punt8'>0</td>
                         </tr>
                         <tr>
                             <td><i id='status9' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
                             <td>Solo letras</td>
-                            <td>-n</td>
+                            <td>-(n*2)</td>
                             <td id='cant9'>0</td>
                             <td id='punt9'>0</td>
                         </tr>
@@ -192,14 +192,14 @@
                         <tr>
                             <td><i id='status13' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
                             <td>Letras Secuenciales</td>
-                            <td>-(n*3)</td>
+                            <td>-(n*4)</td>
                             <td id='cant13'>0</td>
                             <td id='punt13'>0</td>
                         </tr>
                         <tr>
                             <td><i id='status14' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
                             <td>Números Secuenciales</td>
-                            <td>-(n*3)</td>
+                            <td>-(n*4)</td>
                             <td id='cant14'>0</td>
                             <td id='punt14'>0</td>
                         </tr>
@@ -219,6 +219,7 @@
     <!-- JavaScript -->
     <script src="../js/updateVista.js"></script>
     <script src="../js/medidor.js"></script>
+    <script src="../js/theme.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -1,18 +1,3 @@
-.title {
-    margin-left: 12%;
-    color: whitesmoke !important;
-}
-
-.title2 {
-    margin-left: 10%;
-}
-
-.capTop {
-    caption-side: top;
-    margin-bottom: -1%;
-    margin-left: 1%;
-}
-
 .lastsTable { /*index only*/
     margin-top: -3%;
 }
@@ -22,28 +7,4 @@
     margin-bottom: -2;
 }
 
-
-hr {
-    border: 0;
-    clear:both;
-    display:block;
-    width: 96%;               
-    background-color:#dc3545;
-    height: 2px;
-  }
-
-  .navColor {
-    background-image: linear-gradient(to bottom right, firebrick, black);
-  }
-
-  .jumb {
-      /*background-color: white !important;*/
-      background-image: linear-gradient(to bottom right, white, firebrick);
-      margin-top: 2%;
-  }
-
-  .margenes {
-      margin-left: 5% !important;
-      margin-right: 5% !important;
-  }
 

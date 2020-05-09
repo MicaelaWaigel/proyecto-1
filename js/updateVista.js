@@ -28,8 +28,8 @@ function vistaAdiciones(cantAdd, puntAdd) {
     for (i=1; i<8; i++){
         let idCant = 'cant' + i;
         let idPunt = 'punt' + i;
-        document.getElementById(idCant).innerHTML = cantValues[i-1];
-        document.getElementById(idPunt).innerHTML = puntValues[i-1];
+       get(idCant).innerHTML = cantValues[i-1];
+       get(idPunt).innerHTML = puntValues[i-1];
         total += puntValues[i-1];
         updateIconosAdiciones(cantValues[i-1], i);
     }
@@ -44,7 +44,7 @@ function vistaAdiciones(cantAdd, puntAdd) {
 function updateIconosAdiciones(cantValue, i) {
 
     const id = 'status' + i;
-    const icono = document.getElementById(id);
+    const icono =get(id);
 
     if(i === 1) {
         if ( cantValue >= 8 ) {
@@ -72,17 +72,13 @@ function updateIconosAdiciones(cantValue, i) {
 function changeIconAdd(icon, ok) {
     if (ok) {
         if (icon.classList.contains('mal')) {
-            icon.classList.remove('mal');
-            icon.classList.remove('fa-times-circle');
-            icon.classList.add('ok');
-            icon.classList.add('fa-check-circle');
+            icon.classList.replace('mal', 'ok');
+            icon.classList.replace('fa-times-circle', 'fa-check-circle');
         }
     } else {
         if (icon.classList.contains('ok')) {
-            icon.classList.remove('ok');
-            icon.classList.remove('fa-check-circle');
-            icon.classList.add('mal');
-            icon.classList.add('fa-times-circle');
+            icon.classList.replace('ok', 'mal');
+            icon.classList.replace('fa-check-circle', 'fa-times-circle');
         }
     }
     
@@ -99,10 +95,10 @@ function vistaDeducciones(cantDed, puntDed){
     for (i=8; i<15; i++){
         let idCant = 'cant' + i;
         let idPunt = 'punt' + i;
-        document.getElementById(idCant).innerHTML = cantValues[i-8];
+       get(idCant).innerHTML = cantValues[i-8];
         puntValues[i-8] === 0 ? 
-            document.getElementById(idPunt).innerHTML = puntValues[i-8] : 
-            document.getElementById(idPunt).innerHTML = '-' + puntValues[i-8];
+           get(idPunt).innerHTML = puntValues[i-8] : 
+           get(idPunt).innerHTML = '-' + puntValues[i-8];
         
         total += puntValues[i-8];
         updateIconosDeducciones(cantValues[i-8], i);
@@ -118,7 +114,7 @@ function vistaDeducciones(cantDed, puntDed){
 */
 function updateIconosDeducciones(cantValue, i) {
     const id = 'status' + i;
-    const icono = document.getElementById(id);
+    const icono = get(id);
     if (cantValue > 0) {
         changeIconDed(icono, false);
     } else {
@@ -130,17 +126,13 @@ function changeIconDed(icon, neutral) {
 
     if (neutral) {
         if (icon.classList.contains('warning')) {
-            icon.classList.remove('warning');
-            icon.classList.remove('fa-exclamation-circle');
-            icon.classList.add('neutral');
-            icon.classList.add('fa-minus-circle');
+            icon.classList.replace('warning', 'neutral');
+            icon.classList.replace('fa-exclamation-circle', 'fa-minus-circle');
         }
     } else {
         if (icon.classList.contains('neutral')) {
-            icon.classList.remove('neutral');
-            icon.classList.remove('fa-minus-circle');
-            icon.classList.add('warning');
-            icon.classList.add('fa-exclamation-circle');
+            icon.classList.replace('neutral', 'warning');
+            icon.classList.replace('fa-minus-circle', 'fa-exclamation-circle');
         }
         
         
@@ -152,8 +144,8 @@ function changeIconDed(icon, neutral) {
     el puntaje de la password analizada, y su complejidad.
 */
 function vistaProgressBar (puntTotal) {
-    let barPuntaje = document.getElementById('barPuntaje');
-    let badgeComp = document.getElementById('complejidad');
+    let barPuntaje =get('barPuntaje');
+    let badgeComp =get('complejidad');
 
     if (puntTotal < 44) {
         if(barPuntaje.classList.contains('bg-warging')){
@@ -211,5 +203,10 @@ function vistaProgressBar (puntTotal) {
         
     }
 
-    document.getElementById('complejidad').innerHTML = complejidad;
+   get('complejidad').innerHTML = complejidad;
+}
+
+
+function get(id) {
+    return document.getElementById(id);
 }

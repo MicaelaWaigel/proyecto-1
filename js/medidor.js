@@ -160,13 +160,13 @@ function calcularDeducciones(password, cantidades) {
 */
 function calcularPuntajesDeducciones(adicciones, deducciones) {
     let puntajes = {
-        puntSoloNumeros: ((deducciones.soloNumeros > 0) ? adicciones.cantChar : 0),
-        puntSoloLetras: ((deducciones.soloLetras > 0) ? adicciones.cantChar : 0),
+        puntSoloNumeros: ((deducciones.soloNumeros > 0) ? adicciones.cantChar*2 : 0),
+        puntSoloLetras: ((deducciones.soloLetras > 0) ? adicciones.cantChar*2 : 0),
         puntMayusConse: deducciones.mayusConsecutivas*2,
         puntMinusConse: deducciones.minusConsecutivas*2,
         puntNumConse: deducciones.numConsecutivos*2,
-        puntLetrasSec: deducciones.letrasSecuenciales*3,
-        puntNumSec: deducciones.numSecuenciales*3
+        puntLetrasSec: deducciones.letrasSecuenciales*4,
+        puntNumSec: deducciones.numSecuenciales*4
     };
     
     return puntajes;
