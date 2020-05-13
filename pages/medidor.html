@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>Proyecto 1</title>
+    <title>PassMeter</title>
   </head>
   <body onload='checkThemeMedidor()'>
       <nav class="navbar navbar-light navColor">
@@ -18,7 +18,7 @@
           <img src="../resources/icon-white.png" width="40" height="40" class="d-inline-block align-top" alt="">
           <h3 class="title2">PassMeter</h3>
         </a>
-        <div class="dropdown">
+        <div class="dropdown dropMargen">
           <i class="fa fa-ellipsis-v fa-2x text-light" id="dropdownMenuLink" data-toggle="dropdown"></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
             <h6 class="dropdown-header">Cambiar tema</h6>
@@ -86,133 +86,136 @@
                 </div>
             </div>
             <div class="col-sm">
-                <table class="table table-sm table-bordered">
-                    <caption class="capTop">Adicciones</caption>
-                    <thead class="text-center">
-                        <tr>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Requerimiento</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Puntaje</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <tr>
-                            <td><i id='status1' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Número de caracteres</td>
-                            <td>+(n*4)</td>
-                            <td id='cant1'>0</td>
-                            <td id='punt1'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status2' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Letras Mayúsculas</td>
-                            <td>+((long-n)*2)</td>
-                            <td id='cant2'>0</td>
-                            <td id='punt2'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status3' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Letras Minúsculas</td>
-                            <td>+((long-n)*2)</td>
-                            <td id='cant3'>0</td>
-                            <td id='punt3'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status4' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Números</td>
-                            <td>+(n*4)</td>
-                            <td id='cant4'>0</td>
-                            <td id='punt4'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status5' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Simbolos</td>
-                            <td>+(n*6)</td>
-                            <td id='cant5'>0</td>
-                            <td id='punt5'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status6' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Números o Simbolos en medio</td>
-                            <td>+(n*2)</td>
-                            <td id='cant6'>0</td>
-                            <td id='punt6'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status7' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
-                            <td>Requerimientos</td>
-                            <td>+(n*2)</td>
-                            <td id='cant7'>0</td>
-                            <td id='punt7'>0</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <table class="table table-sm table-bordered minusTop">
-                    <caption class="capTop">Deducciones</caption>
-                    <thead class="text-center">
-                        <tr>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Requerimiento</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Puntaje</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <tr>
-                            <td><i id='status8' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Solo números</td>
-                            <td>-(n*2)</td>
-                            <td id='cant8'>0</td>
-                            <td id='punt8'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status9' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Solo letras</td>
-                            <td>-(n*2)</td>
-                            <td id='cant9'>0</td>
-                            <td id='punt9'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status10' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Letras Mayúsculas consecutivas</td>
-                            <td>-(n*2)</td>
-                            <td id='cant10'>0</td>
-                            <td id='punt10'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status11' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Letras Minusculas consecutivas</td>
-                            <td>-(n*2)</td>
-                            <td id='cant11'>0</td>
-                            <td id='punt11'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status12' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Números consecutivos</td>
-                            <td>-(n*2)</td>
-                            <td id='cant12'>0</td>
-                            <td id='punt12'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status13' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Letras Secuenciales</td>
-                            <td>-(n*4)</td>
-                            <td id='cant13'>0</td>
-                            <td id='punt13'>0</td>
-                        </tr>
-                        <tr>
-                            <td><i id='status14' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
-                            <td>Números Secuenciales</td>
-                            <td>-(n*4)</td>
-                            <td id='cant14'>0</td>
-                            <td id='punt14'>0</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <caption class="capTop">Adicciones</caption>
+                        <thead class="text-center">
+                            <tr>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Requerimiento</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td><i id='status1' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Número de caracteres</td>
+                                <td>+(n*4)</td>
+                                <td id='cant1'>0</td>
+                                <td id='punt1'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status2' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Letras Mayúsculas</td>
+                                <td>+((long-n)*2)</td>
+                                <td id='cant2'>0</td>
+                                <td id='punt2'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status3' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Letras Minúsculas</td>
+                                <td>+((long-n)*2)</td>
+                                <td id='cant3'>0</td>
+                                <td id='punt3'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status4' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Números</td>
+                                <td>+(n*4)</td>
+                                <td id='cant4'>0</td>
+                                <td id='punt4'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status5' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Simbolos</td>
+                                <td>+(n*6)</td>
+                                <td id='cant5'>0</td>
+                                <td id='punt5'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status6' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Números o Simbolos en medio</td>
+                                <td>+(n*2)</td>
+                                <td id='cant6'>0</td>
+                                <td id='punt6'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status7' class="fa fa-times-circle fa-2x mal" aria-hidden="true"></i></td>
+                                <td>Requerimientos</td>
+                                <td>+(n*2)</td>
+                                <td id='cant7'>0</td>
+                                <td id='punt7'>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered minusTop">
+                        <caption class="capTop">Deducciones</caption>
+                        <thead class="text-center">
+                            <tr>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Requerimiento</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td><i id='status8' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Solo números</td>
+                                <td>-(n*2)</td>
+                                <td id='cant8'>0</td>
+                                <td id='punt8'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status9' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Solo letras</td>
+                                <td>-(n*2)</td>
+                                <td id='cant9'>0</td>
+                                <td id='punt9'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status10' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Letras Mayúsculas consecutivas</td>
+                                <td>-(n*2)</td>
+                                <td id='cant10'>0</td>
+                                <td id='punt10'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status11' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Letras Minusculas consecutivas</td>
+                                <td>-(n*2)</td>
+                                <td id='cant11'>0</td>
+                                <td id='punt11'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status12' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Números consecutivos</td>
+                                <td>-(n*2)</td>
+                                <td id='cant12'>0</td>
+                                <td id='punt12'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status13' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Letras Secuenciales</td>
+                                <td>-(n*4)</td>
+                                <td id='cant13'>0</td>
+                                <td id='punt13'>0</td>
+                            </tr>
+                            <tr>
+                                <td><i id='status14' class="fa fa-minus-circle fa-2x neutral" aria-hidden="true"></i></td>
+                                <td>Números Secuenciales</td>
+                                <td>-(n*4)</td>
+                                <td id='cant14'>0</td>
+                                <td id='punt14'>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

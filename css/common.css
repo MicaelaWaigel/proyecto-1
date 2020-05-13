@@ -31,13 +31,15 @@ hr {
     height: 2px;
   }
 
-  .navColor {
-    background-image: linear-gradient(to bottom right, var(--color-theme), black);
-  }
+.navColor {
+background-image: linear-gradient(to bottom right, var(--color-theme), black);
+}
 
-  .jumb {
-      background-image: linear-gradient(to bottom right, white, var(--color-theme));
-      margin-top: 2%;
-  }
+.jumb {
+    background-image: linear-gradient(to bottom right, white, var(--color-theme));
+    margin-top: 2%;
+}
 
-  
+.dropMargen {
+    margin-right: 1%;
+}

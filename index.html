@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>Proyecto 1</title>
+    <title>PassMeter</title>
   </head>
   <body onload="cargarTablaAndTema()">
 
@@ -19,7 +19,7 @@
         <img src="resources/icon-white.png" width="40" height="40" class="d-inline-block align-top" alt="">
         <h3 class="title2">PassMeter</h3>
       </a>
-      <div class="dropdown">
+      <div class="dropdown dropMargen">
         <i class="fa fa-ellipsis-v fa-2x text-light" id="dropdownMenuLink" data-toggle="dropdown"></i>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
           <h6 class="dropdown-header">Cambiar tema</h6>
@@ -41,22 +41,22 @@
           <a class="btn btn-danger btn-lg margenes" href="./pages/medidor.html" role="button">Nueva Medición</a>
         </div>
       </div>
-
-      <table class="table table-sm lastsTable">
-        <caption class="capTop">Ultimas 5 contraseñas medidas</caption>      
-        <thead class="text-center">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Puntaje</th>
-            <th scope="col">Complejidad</th>
-        </tr>
-        </thead>
-        <tbody id="tablaStorage" class="text-center">
-        
-        </tbody>
-    </table>
-
+      <div class="table-responsive">
+        <table class="table table-sm lastsTable">
+          <caption class="capTop">Ultimas 5 contraseñas medidas</caption>      
+          <thead class="text-center">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Contraseña</th>
+              <th scope="col">Puntaje</th>
+              <th scope="col">Complejidad</th>
+          </tr>
+          </thead>
+          <tbody id="tablaStorage" class="text-center">
+          
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- JavaScript -->
     <script src="js/app.js"></script>
