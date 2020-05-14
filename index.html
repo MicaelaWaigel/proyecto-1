@@ -6,13 +6,63 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/app.css">
-
-    <title>Proyecto 1</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>PassMeter</title>
   </head>
-  <body>
-    <h1>Proyecto 1</h1>
+  <body onload="cargarTablaAndTema()">
 
+    <nav class="navbar navbar-light navColor">
+      <a class="navbar-brand title d-flex" href="index.html">
+        <img src="resources/icon-white.png" width="40" height="40" class="d-inline-block align-top" alt="">
+        <h3 class="title2">PassMeter</h3>
+      </a>
+      <div class="dropdown dropMargen">
+        <i class="fa fa-ellipsis-v fa-2x text-light" id="dropdownMenuLink" data-toggle="dropdown"></i>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+          <h6 class="dropdown-header">Cambiar tema</h6>
+          <a class="dropdown-item" href="#" onclick='changeTheme("Rojo")'>Rojo</a>
+          <a class="dropdown-item" href="#" onclick='changeTheme("Azul")'>Azul</a>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <div class="jumbotron jumbotron-fluid jumb">
+        <div class="container contJumb">
+          <h1 class="display-4 margenes">Bienvenido!</h1>
+          <p class="lead margenes">Esta es una aplicación para medir que tan segura es una contraseña</p>
+          <hr class="my-4">
+          <p class="margenes">La aplicación medirá de acuerdo a ciertos requerimientos que tan compleja es la contraseña y asignará un puntaje 
+            de acuerdo a si son buenas o malas prácticas, señalando el puntaje general y la complejidad de la misma. 
+            Esto se verá de manera dinámica a medida que el usuario cambie su contraseña como es que va afectando a su complejidad y puntaje.</p>
+          <a class="btn btn-danger btn-lg margenes" href="./pages/medidor.html" role="button">Nueva Medición</a>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-sm lastsTable">
+          <caption class="capTop">Ultimas 5 contraseñas medidas</caption>      
+          <thead class="text-center">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Contraseña</th>
+              <th scope="col">Puntaje</th>
+              <th scope="col">Complejidad</th>
+          </tr>
+          </thead>
+          <tbody id="tablaStorage" class="text-center">
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
     <!-- JavaScript -->
     <script src="js/app.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,0 +1,76 @@
+:root {
+    --color-theme-input: rgb(90, 90, 90, 0.6);
+}
+
+#contenedor {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.space{
+    margin-top: 2%;
+}
+
+.tam {
+    margin-top: 1%;
+    width: 95%;
+}
+
+.tamPunt {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    width: 95%;
+}
+
+.tamBar{
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.posBar {
+    margin-left: 1%;
+}
+
+.pos {
+    padding-top: 1%;
+    margin-left: 5%;
+}
+
+.mal {
+    color: #dc3545;
+}
+
+.ok {
+    color: #28a745;
+}
+
+.warning {
+    color: #ffc107;
+}
+
+.neutral {
+    color: #17a2b8;
+}
+
+
+.minusTop {
+    margin-top: -3%;
+}
+.center-button {
+    margin-left: 2%;
+}
+
+.posComplejidad {
+    margin-left: 50%;
+}
+
+.colorText {
+    color: white !important;
+}
+
+.form-control:focus {
+    border-color: var(--color-theme-input) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px var(--color-theme-input) !important;
+}

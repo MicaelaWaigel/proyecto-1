@@ -1,0 +1,45 @@
+:root {
+    --color-theme: firebrick;
+}
+
+.title {
+    margin-left: 12%;
+    color: whitesmoke !important;
+}
+
+.title2 {
+    margin-left: 10%;
+}
+
+.capTop {
+    caption-side: top;
+    margin-bottom: -1%;
+    margin-left: 1%;
+}
+
+.margenes {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color: var( --color-theme);
+    height: 2px;
+  }
+
+.navColor {
+background-image: linear-gradient(to bottom right, var(--color-theme), black);
+}
+
+.jumb {
+    background-image: linear-gradient(to bottom right, white, var(--color-theme));
+    margin-top: 2%;
+}
+
+.dropMargen {
+    margin-right: 1%;
+}
